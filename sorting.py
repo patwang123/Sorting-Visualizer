@@ -58,5 +58,22 @@ class InsertionSort(Algorithm):
 		for i in range(len(self.arr)):
 			yield [[i,'g']]
 class MergeSort(Algorithm):
+	def __init__(self,size):
+		super().__init__(size,'Merge Sort')
+	def arr_sort(self):
+		pass
+class HeapSort(Algorithm):
+	def __init__(self,size):
+		super().__init__(size,'Heap Sort')
+	def arr_sort(self):
+		pass
+class SelectionSort(Algorithm):
+	def __init__(self,size):
+		super().__init__(size,'Heap Sort')
+	def arr_sort(self):
+		pass
+class CountingSort(Algorithm):
+	def __init__(self,size):
+		super().__init__(size,'Counting Sort')
 	def arr_sort(self):
 		pass
