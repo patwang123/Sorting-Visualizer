@@ -60,20 +60,49 @@ class InsertionSort(Algorithm):
 class MergeSort(Algorithm):
 	def __init__(self,size):
 		super().__init__(size,'Merge Sort')
-	def arr_sort(self):
-		pass
+	def sort(self,p=0,q=None):
+		if q == None:
+			q = self.size-1
+		if p == q:
+			return
+		piv = (p+q)//2
+		yield from self.sort(p,piv)
+		yield from self.sort(piv+1,q)
+		left_list = self.arr[p:piv+1]
+		right_list = self.arr[piv+1:q+1]
+		count = p
+		while left_list and right_list:
+			self.comparisons += 1
+			self.swaps += 1
+			if left_list[0] < right_list[0]:
+				self.arr[count] = left_list.pop(0)
+				yield [[count,self.arr[count]]]
+			else:
+				self.arr[count] = right_list.pop(0)
+				yield [[count,self.arr[count]]]
+			count += 1
+		if not left_list:
+			self.arr[count:q+1] = right_list
+			yield [[i,self.arr[i]] for i in range(count,q+1)]
+		else:
+			self.arr[count:q+1] = left_list
+			yield [[i,self.arr[i]] for i in range(count,q+1)]
+		if p == 0 and q == self.size-1:
+			for i in range(len(self.arr)):
+				yield [[i,'g']]
+
 class HeapSort(Algorithm):
 	def __init__(self,size):
 		super().__init__(size,'Heap Sort')
-	def arr_sort(self):
+	def sort(self):
 		pass
 class SelectionSort(Algorithm):
 	def __init__(self,size):
 		super().__init__(size,'Heap Sort')
-	def arr_sort(self):
+	def sort(self):
 		pass
 class CountingSort(Algorithm):
 	def __init__(self,size):
 		super().__init__(size,'Counting Sort')
-	def arr_sort(self):
+	def sort(self):
 		pass
