@@ -100,7 +100,18 @@ class SelectionSort(Algorithm):
 	def __init__(self,size):
 		super().__init__(size,'Heap Sort')
 	def sort(self):
-		pass
+		for i in range(self.size):
+			min_idx = i
+			for j in range(i+1,self.size):
+				self.comparisons += 1
+				if self.arr[j] < self.arr[min_idx]:
+					min_idx = j
+			self.swaps += 1
+			self.arr[min_idx],self.arr[i] = self.arr[i],self.arr[min_idx]
+			#SelectionSort moves extremely quickly due to the nature that it's all computational and not many frames, so I separated it into 3 portions to slow it down a bit.
+			yield [[i,self.arr[i]]]
+			yield [[min_idx,self.arr[min_idx]]]
+			yield [[i,'g']]
 class CountingSort(Algorithm):
 	def __init__(self,size):
 		super().__init__(size,'Counting Sort')
