@@ -8,7 +8,7 @@ def main():
 	n = int(input("Size of array: "))
 	al = int(input("Choose sorting algorithm (0: QuickSort, 1: MergeSort, 2: InsertionSort): "))
 
-	sort_dict = {0: QuickSort, 1: MergeSort, 2: InsertionSort}
+	sort_dict = {0: QuickSort, 1: MergeSort, 2: InsertionSort, 3: SelectionSort, 4: HeapSort, 5: CountingSort}
 	sorter = sort_dict[al](n)
 	frames = sorter.start()
 
