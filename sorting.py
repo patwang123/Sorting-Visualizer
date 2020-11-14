@@ -95,7 +95,23 @@ class HeapSort(Algorithm):
 	def __init__(self,size):
 		super().__init__(size,'Heap Sort')
 	def sort(self):
-		pass
+		for i in range(self.size//2-1,-1,-1):
+			self.heapify(arr,self.size,i)
+		for i in range(self.size-1,0,-1):
+			self.arr[i],self.arr[0] = self.arr[i],self.arr[0]
+			yield [[i,self.arr[i]],[0,self.arr[0]]]
+			yield from self.heapify(i,0)
+	def heapify(self,size,idx):
+		largest = idx
+		left,right = 2*idx+1,2*idx+1
+		if left < size and self.arr[left] > self.arr[largest]:
+			largest = left
+		if right < size and self.arr[right] > self.arr[largest]:
+			largest = left
+		if largest != idx:
+			self.arr[idx],self.arr[largest] = self.arr[largest],self.arr[idx]
+			yield [[idx,self.arr[idx]],[largest,self.arr[largest]]]
+			self.heapify(size,largest)
 class SelectionSort(Algorithm):
 	def __init__(self,size):
 		super().__init__(size,'Heap Sort')
