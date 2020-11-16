@@ -139,3 +139,21 @@ class CountingSort(Algorithm):
 		super().__init__(size,'Counting Sort')
 	def sort(self):
 		pass
+class RadixSort(Algorithm):
+	def __init__(self,size):
+		super().__init__(size,'Radix Sort')
+	def sort(self):
+		pass
+class BucketSort(Algorithm):
+	def __init__(self,size):
+		super().__init__(size,'Bucket Sort')
+	def sort(self):
+		pass
+class PigeonholeSort(Algorithm):
+	def __init__(self,size):
+		super().__init__(size,'Pigeonhole Sort')
+	def sort(self):
+		pass
+class CombSort(Algorithm):
+	def __init__(self,size):
+		super().__init__(size,'Comb Sort')
