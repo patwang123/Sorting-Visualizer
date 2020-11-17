@@ -5,6 +5,7 @@ class Algorithm:
 	def __init__(self,size,name):
 		self.name = name
 		self.size = size
+		self.max_num = self.size
 		self.arr = [1+x for x in random.sample(range(size),size)]
 		self.color = ['b' for b in self.arr]
 		self.swaps = 0
@@ -134,11 +135,26 @@ class SelectionSort(Algorithm):
 			yield [[i,self.arr[i]]]
 			yield [[min_idx,self.arr[min_idx]]]
 			yield [[i,'g']]
-class CountingSort(Algorithm):
+class CountingSort(Algorithm): #special type of sort, time complexity does not correspond to swap/comparisons and such
 	def __init__(self,size):
-		super().__init__(size,'Counting Sort')
+		super().__init__(size,'Counting Sort -- note that time complexity O(n+k) does not correspond to swaps and comparisons')
 	def sort(self):
-		pass
+		counts = [0 for _ in range(self.max_num+1)]
+		for i in self.arr:
+			counts[i] += 1
+		before = 0
+		for i, count in enumerate(counts):
+			counts[i] = before
+			before += count
+		#for i in range(1,len(counts)):
+			#counts[i] += counts[i-1]
+		copy = self.arr[:]
+		for i in copy:
+			self.arr[counts[i]] = i
+			self.swaps += 1
+			yield [[counts[i],i],[counts[i],'g']]
+			counts[i] += 1
+		print(self.arr)
 class RadixSort(Algorithm):
 	def __init__(self,size):
 		super().__init__(size,'Radix Sort')
