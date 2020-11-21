@@ -154,7 +154,6 @@ class CountingSort(Algorithm): #special type of sort, time complexity does not c
 			self.swaps += 1
 			yield [[counts[i],i],[counts[i],'g']]
 			counts[i] += 1
-		print(self.arr)
 class RadixSort(Algorithm):
 	def __init__(self,size):
 		super().__init__(size,'Radix Sort')
@@ -173,3 +172,21 @@ class PigeonholeSort(Algorithm):
 class CombSort(Algorithm):
 	def __init__(self,size):
 		super().__init__(size,'Comb Sort')
+	def sort(self):
+		new_gap = lambda g: max(1,int(g*10/13))
+		gap = self.size
+		swap = True
+		self.comparisons += 2
+		while gap > 1 or swap:
+			self.comparisons += 2
+			gap = new_gap(gap)
+			swap = False
+			for i in range(0,self.size-gap):
+				self.comparisons += 1
+				if self.arr[i] > self.arr[i+gap]:
+					self.arr[i],self.arr[i+gap] = self.arr[i+gap],self.arr[i]
+					self.swaps += 1
+					swap = True
+					yield [[i,self.arr[i]],[i+gap,self.arr[i+gap]]]
+		for i in range(self.size):
+			yield [[i,'g']]
