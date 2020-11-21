@@ -9,7 +9,7 @@ def main():
 		n = int(input("Size of array: "))
 		
 
-		sort_dict = {0: QuickSort, 1: MergeSort, 2: InsertionSort, 3: SelectionSort, 4: HeapSort, 5: CountingSort, 6: RadixSort, 7: BucketSort, 8: PigeonHoleSort, 9: CombSort}
+		sort_dict = {0: QuickSort, 1: MergeSort, 2: InsertionSort, 3: SelectionSort, 4: HeapSort, 5: CountingSort, 6: RadixSort, 7: BucketSort, 8: PigeonholeSort, 9: CombSort}
 
 		al = int(input("Choose sorting algorithm: "+\
 		'\n'.join(['{0}: {1}'.format(str(k),v(0).name) for k,v in sort_dict.items()]) + '\n>'))
